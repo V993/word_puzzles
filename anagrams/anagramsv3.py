@@ -7,6 +7,23 @@ from functools import reduce
 from itertools import combinations
 
 
+### TODO:
+
+"""
+Algo:
+    - Get string of length 7, with one gold character which must be in substrings
+    - Find all substrings of len >3
+    - Find all permutations of all substrings
+    - Check each generated string against the dictionary and return accepted results
+"""
+
+
+# Re-write algorithm to get all permutations of string of all sizes >3
+# Use concurrency to check generate queries, and check each query in the dictionary.
+# Output pangram(s)
+# Improve user input with instructions
+# Take gold letter input (use last letter?)
+
 def all_combinations(letters):
     """
     Given a list of letters, find all possible combinations.
@@ -35,7 +52,6 @@ def get_permuations(letters):
     recursive_permuations(list(letters), 0, len(letters), data)
     return data
 
-
 def recommend_letters(letters):
     """
     Algorithm to dynamically choose letters to add.
@@ -63,8 +79,6 @@ def recommend_letters(letters):
         new_letters += '0'
     
     return new_letters
-
-
 
 # TODO: implement this algoriithm with a rotating addition of characters (up to 2)
 # in order to account for pangrams longer than the input string size.
@@ -119,20 +133,20 @@ def main():
     # print("|")
 
     # Add any characters
-    print("Suggested duplicates:")
-    for c in query:
-        print(f"| {c}", end= " ")
-    print("|")
-    for i in range(len(query)):
-        print(f"| {i}", end= " ")
-    print("|")
+    # print("Suggested duplicates:")
+    # for c in query:
+    #     print(f"| {c}", end= " ")
+    # print("|")
+    # for i in range(len(query)):
+    #     print(f"| {i}", end= " ")
+    # print("|")
 
-    print("Add duplicates? (num or enter for none))")
-    which_duplicates = input("\t:")
+    # print("Add duplicates? (num or enter for none))")
+    # which_duplicates = input("\t:")
 
-    if which_duplicates != "":
-        for duplicate in which_duplicates:
-            query += query[int(duplicate)]
+    # if which_duplicates != "":
+    #     for duplicate in which_duplicates:
+    #         query += query[int(duplicate)]
 
     query_start = time.time()
     queries = permuations_and_substrings(query)
