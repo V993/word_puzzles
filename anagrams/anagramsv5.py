@@ -5,7 +5,7 @@ from sys import argv
 
 def get_dict():
     # path_to_dict = "/usr/share/dict/web2" # in-built mac dictionary
-    path_to_dict = "/Users/v99352/Documents/code/word_puzzles/anagrams/words.txt"
+    path_to_dict = "./words.txt"
     with open(path_to_dict, "r") as f:
         dictionary = f.readlines()
     return dictionary
@@ -45,9 +45,9 @@ def parse_dictionary(dictionary, letters, gold):
         
         if valid: 
             if 0 not in letter_counts.values(): # if pangram, add to pangrams
-                pangrams.append(dict_word)
+                pangrams.append(dict_word.upper())
             # else: # otherwise add to matching words
-            answer.append(dict_word)
+            answer.append(dict_word.upper())
 
     return sorted(answer,key=len), sorted(pangrams,key=len)
 
@@ -72,8 +72,8 @@ def main():
 
 
     answer, pangrams = parse_dictionary(get_dict(), letters, gold)
-    print(f"\n\tSOLUTIONS : {answer}")
-    print(f"\n\tPANGRAMS  : {pangrams}")
+    print(f"\n\tSolutions : {answer}")
+    print(f"\n\tPangrams  : {pangrams}")
     print()
 
 
